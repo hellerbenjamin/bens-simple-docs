@@ -19,7 +19,7 @@ Class Simple_Docs {
 
 	public static function init() {
 		if ( is_null( self::$instance ) ) {
-			self::$instance = new Woocommerce_Add_To_Quote();
+			self::$instance = new Simple_Docs();
 		}
 
 		return self::$instance;
@@ -51,7 +51,7 @@ Class Simple_Docs {
 		$parse = new Parsedown();
 
 		global $wpdb;
-		$docs = $wpdb->get_results( 'SELECT * FROM ' . self::$table_name );
+		$docs = $wpdb->get_results( 'SELECT * FROM ' . $wpdb->prefix . self::$table_name );
 		require_once 'views/documentation.php';
 	}
 
@@ -66,7 +66,7 @@ Class Simple_Docs {
 			$content = wp_unslash ( $_POST['content'] );
 
 			$success = $wpdb->insert(
-				self::$table_name,
+				$wpdb->prefix . self::$table_name,
 				array(
 					'name' => $name,
 					'content' => $content
@@ -94,7 +94,7 @@ Class Simple_Docs {
 		global $wpdb;
 
 		if ( isset( $_POST['doc'] ) ) {
-			$doc = $wpdb->get_row( 'SELECT * FROM ' . self::$table_name . ' WHERE name = "' . $_POST['doc'] . '"');
+			$doc = $wpdb->get_row( 'SELECT * FROM ' . $wpdb->prefix . self::$table_name . ' WHERE name = "' . $_POST['doc'] . '"');
 			require_once 'views/edit-documentation.php';
 		} else {
 			if ( isset( $_POST['name'] ) ) {
@@ -126,7 +126,7 @@ Class Simple_Docs {
 
 			}
 
-			$docs = $wpdb->get_results( 'SELECT * FROM ' . self::$table_name );
+			$docs = $wpdb->get_results( 'SELECT * FROM ' . $wpdb->prefix . self::$table_name );
 			require_once 'views/choose-documentation.php';
 
 		}
