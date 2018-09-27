@@ -1,10 +1,11 @@
 <?php
 /*
- * Plugin Name: Simple Docs
- * Description: Simple Plugin for adding editing docs to the WP Dashboard
+ * Plugin Name: Ben's Simple Docs
+ * Description: A Simple plugin for adding editing docs to the WP Dashboard
  * Author: Benjamin Heller
  * Author URI: https://benjaminheller.net
  * Version: .6
+ * text-domain: bens-simple-docs
  */
 
 if ( !defined( 'ABSPATH' ) ) die();
