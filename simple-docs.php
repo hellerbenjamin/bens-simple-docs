@@ -9,8 +9,8 @@
 
 if ( !defined( 'ABSPATH' ) ) die();
 
-require_once dirname( __FILE__ ) . '/class-simple_docs.php';
-include_once dirname( __FILE__ ) . '/class-simple_docs_activator.php';
+require_once dirname( __FILE__ ) . '/class-simple-docs.php';
+include_once dirname( __FILE__ ) . '/class-simple-docs-activator.php';
 register_activation_hook( __FILE__, array( 'Simple_Docs_Activator', 'install' ) );
 
 
